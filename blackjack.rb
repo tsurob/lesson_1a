@@ -75,7 +75,7 @@ end
 
 def hit 
   hits = @shuffled_deck.pop
-	hits
+  hits
 end
 
 
@@ -95,61 +95,60 @@ end
 
 
 def end_of_game player_card 
+	if check_total_value(player_card) == 21 && check_total_value(@dealer_card) == 21 || check_total_value(@dealer_card) > 21 && check_total_value(player_card) > 21 ||
+	check_total_value(@dealer_card) == check_total_value(player_card)
+	  puts "It's a tie!"
+	  puts "The player total points is:  #{check_total_value(player_card)}"
+	  puts "The dealers total points is:  #{check_total_value(@dealer_card)}"
+	  puts
+	  puts "Player final Cards: #{player_card.inspect}"
+	  puts "Dealer final Cards: #{@dealer_card.inspect}"
 
-		if check_total_value(player_card) == 21 && check_total_value(@dealer_card) == 21 || check_total_value(@dealer_card) > 21 && check_total_value(player_card) > 21 ||
-			check_total_value(@dealer_card) == check_total_value(player_card)
-	  	puts "It's a tie!"
-	  	puts "The player total points is:  #{check_total_value(player_card)}"
-	  	puts "The dealers total points is:  #{check_total_value(@dealer_card)}"
-	  	puts
-	  	puts "Player final Cards: #{player_card.inspect}"
-			puts "Dealer final Cards: #{@dealer_card.inspect}"
-
-		elsif check_total_value(player_card) == 21 && check_total_value(@dealer_card) < 21 &&
-			@player_answer == 'stay'
-			puts "Blackjack!!"
-			puts "The player total points is: #{check_total_value(player_card)}"
-			puts "The dealers total points is:  #{check_total_value(@dealer_card)}"
-			puts
-			puts "Player final Cards: #{player_card.inspect}"
-			puts "Dealer final Cards: #{@dealer_card.inspect}"
+	elsif check_total_value(player_card) == 21 && check_total_value(@dealer_card) < 21 &&
+	@player_answer == 'stay'
+	  puts "Blackjack!!"
+	  puts "The player total points is: #{check_total_value(player_card)}"
+	  puts "The dealers total points is:  #{check_total_value(@dealer_card)}"
+	  puts
+	  puts "Player final Cards: #{player_card.inspect}"
+	  puts "Dealer final Cards: #{@dealer_card.inspect}"
 			
-	  elsif check_total_value(@dealer_card) > check_total_value(player_card) &&
-	  	check_total_value(@dealer_card) <= 21 
-	  	puts "End of game. You lost."
-	  	puts "The player total points is:  #{check_total_value(player_card)}"
-	  	puts "The dealers total points is: #{check_total_value(@dealer_card)}"
-	  	puts
-	  	puts "Player final Cards: #{player_card.inspect}"
-			puts "Dealer final Cards: #{@dealer_card.inspect}"
+	elsif check_total_value(@dealer_card) > check_total_value(player_card) &&
+	check_total_value(@dealer_card) <= 21 
+	  puts "End of game. You lost."
+	  puts "The player total points is:  #{check_total_value(player_card)}"
+	  puts "The dealers total points is: #{check_total_value(@dealer_card)}"
+	  puts
+	  puts "Player final Cards: #{player_card.inspect}"
+	  puts "Dealer final Cards: #{@dealer_card.inspect}"
 	  	
-	  elsif check_total_value(player_card) > check_total_value(@dealer_card) &&
-	  	check_total_value(player_card) <= 21 
-	  	puts "Player wins!!"
-	  	puts "The player total points is:  #{check_total_value(player_card)}"
-	  	puts "The dealers total points is: #{check_total_value(@dealer_card)}"
-	  	puts
-	  	puts "Player final Cards: #{player_card.inspect}"
-			puts "Dealer final Cards: #{@dealer_card.inspect}"
+        elsif check_total_value(player_card) > check_total_value(@dealer_card) &&
+	check_total_value(player_card) <= 21 
+	  puts "Player wins!!"
+	  puts "The player total points is:  #{check_total_value(player_card)}"
+	  puts "The dealers total points is: #{check_total_value(@dealer_card)}"
+	  puts
+	  puts "Player final Cards: #{player_card.inspect}"
+	  puts "Dealer final Cards: #{@dealer_card.inspect}"
 			
 
-		elsif check_total_value(player_card) > 21 && check_total_value(@dealer_card) <= 21
-			puts "Busts. You lost."
-			puts "The player total point is: #{check_total_value(player_card)}"
-			puts "The dealers total points is:  #{check_total_value(@dealer_card)}"
-			puts
-			puts "Player final Cards: #{player_card.inspect}"
-			puts "Dealer final Cards: #{@dealer_card.inspect}"
+	elsif check_total_value(player_card) > 21 && check_total_value(@dealer_card) <= 21
+	  puts "Busts. You lost."
+	  puts "The player total point is: #{check_total_value(player_card)}"
+	  puts "The dealers total points is:  #{check_total_value(@dealer_card)}"
+	  puts
+	  puts "Player final Cards: #{player_card.inspect}"
+	  puts "Dealer final Cards: #{@dealer_card.inspect}"
 			
-	  elsif check_total_value(@dealer_card) > 21 && check_total_value(player_card) <= 21
-			puts "Player wins!!"
-			puts "The player total points is: #{check_total_value(player_card)}"
-			puts "The dealers total points is:  #{check_total_value(@dealer_card)}"
-			puts
-	 		puts "Player final Cards: #{player_card.inspect}"
-			puts "Dealer final Cards: #{@dealer_card.inspect}"
+	elsif check_total_value(@dealer_card) > 21 && check_total_value(player_card) <= 21
+	  puts "Player wins!!"
+	  puts "The player total points is: #{check_total_value(player_card)}"
+	  puts "The dealers total points is:  #{check_total_value(@dealer_card)}"
+	  puts
+	  puts "Player final Cards: #{player_card.inspect}"
+	  puts "Dealer final Cards: #{@dealer_card.inspect}"
 			
-		end
+	end
 	
 end
 
@@ -164,31 +163,31 @@ def get_player_opt
 			@player_card << hit
 			puts @player_card.inspect
 			puts @dealer_card.inspect
-     #  puts "This is player total #{check_total_value(@player_card)}"
-	    # puts "This is dealer total #{check_total_value(@dealer_card)}"
-      puts "Your options: 'Hit', 'Stay', or 'Quit' : to exit."
+                        # puts "This is player total #{check_total_value(@player_card)}"
+	                # puts "This is dealer total #{check_total_value(@dealer_card)}"
+                        puts "Your options: 'Hit', 'Stay', or 'Quit' : to exit."
 			print "> "
 			@player_answer= gets.downcase.chomp
-		elsif @player_answer == 'stay'
+		 elsif @player_answer == 'stay'
 			until check_total_value(@dealer_card) >= 17
-	    	@dealer_card << hit
-		  end
+	                	@dealer_card << hit
+		         end
 		  end_of_game @player_card
 		  break
-		elsif @player_answer == 'split'
+		  elsif @player_answer == 'split'
 			until check_total_value(@dealer_card) >= 17
-	    	@dealer_card << hit
+	    	  @dealer_card << hit
 			end
 			split_card 
 			break
-		elsif @player_answer == 'quit'
+		 elsif @player_answer == 'quit'
 			exit
-		else
+		 else
 			puts "'#{@player_answer}' is not an options?"
 			puts "Your options: 'Hit', 'Stay', or 'Quit' : to exit."
 			print "> "
 			puts get_player_opt
-		end
+		 end
 	end
 	end_of_game @player_card
 end
@@ -216,22 +215,22 @@ end
 def split_card 
 		@player_card.each do
 		  @card_a  = @player_card[0]
-			@card_b  = @player_card[1]
-			if @card_a[1] == @card_b[1] 
-		  	@first_hand << @player_card[0]
-			  @second_hand << @player_card[1]
-				@first_hand << hit
-				@second_hand << hit
-				puts "This is your first hand #{@first_hand.inspect}"
-				puts "This is your second hand #{@second_hand.inspect}"
-		 	  break
-			else
-				puts "'#{@player_answer}' is not an options?"
-				puts "Your options: 'Hit', 'Stay', or 'Quit' : to exit."
-				print "> "
-				puts get_player_opt
-				break
-			end
+		  @card_b  = @player_card[1]
+		  if @card_a[1] == @card_b[1] 
+		     @first_hand << @player_card[0]
+		      @second_hand << @player_card[1]
+		      @first_hand << hit
+		      @second_hand << hit
+		      puts "This is your first hand #{@first_hand.inspect}"
+		      puts "This is your second hand #{@second_hand.inspect}"
+		      break
+		    else
+		      puts "'#{@player_answer}' is not an options?"
+		      puts "Your options: 'Hit', 'Stay', or 'Quit' : to exit."
+		      print "> "
+		      puts get_player_opt
+		      break
+		     end
 		end
 puts 
 puts "First hand result:"
